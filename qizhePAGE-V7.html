@@ -15,6 +15,14 @@
             padding: 0;
             box-sizing: border-box;
         }
+        :root {
+            --panel-bg: rgba(255, 255, 255, 0.96);
+            --card-bg: #f9fcff;
+            --line-soft: #dbe8f4;
+            --ink-main: #16354f;
+            --ink-sub: #2b506e;
+            --brand: #2c7cb0;
+        }
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             background:
@@ -22,8 +30,8 @@
                 radial-gradient(900px 600px at 95% 5%, rgba(73, 130, 255, 0.16), transparent 65%),
                 linear-gradient(140deg, #060c16 0%, #0a1222 45%, #0e1b2e 100%);
             color: #1a2b3c;
-            line-height: 1.6;
-            padding: 2rem 1.5rem;
+            line-height: 1.65;
+            padding: 2.3rem 1.5rem;
             min-height: 100vh;
             position: relative;
         }
@@ -43,23 +51,22 @@
         }
         body::before {
             background-image:
-                radial-gradient(1300px 800px at 50% 30%, rgba(9, 16, 31, 0.55), rgba(4, 8, 16, 0.92)),
-                url('https://upload.wikimedia.org/wikipedia/commons/4/4c/Dark_Field_Microscopy.gif');
-            background-position: center, center;
-            opacity: 0.52;
+                linear-gradient(140deg, rgba(4, 9, 18, 0.86), rgba(12, 28, 46, 0.84)),
+                url('https://images.pexels.com/photos/33474633/pexels-photo-33474633.jpeg?auto=compress&cs=tinysrgb&w=1920');
+            background-position: center;
+            opacity: 0.62;
             animation: bgFloatA 38s ease-in-out infinite alternate;
         }
         body::after {
             background-image:
-                radial-gradient(circle at 20% 25%, rgba(70, 255, 208, 0.2), transparent 48%),
-                radial-gradient(circle at 82% 70%, rgba(120, 160, 255, 0.2), transparent 44%),
-                url('https://upload.wikimedia.org/wikipedia/commons/3/3e/Lancelet_GFP_GIF.gif'),
-                url('https://upload.wikimedia.org/wikipedia/commons/0/07/Unmixed_Autofluorescence.gif'),
-                url('https://upload.wikimedia.org/wikipedia/commons/2/27/E.-coli-growth.gif');
-            background-position: center, center, 8% 18%, 88% 82%, 55% 42%;
-            background-size: auto, auto, 42vmin auto, 36vmin auto, 18vmin auto;
-            opacity: 0.44;
-            mix-blend-mode: lighten;
+                radial-gradient(circle at 25% 25%, rgba(95, 233, 255, 0.24), transparent 45%),
+                radial-gradient(circle at 80% 75%, rgba(94, 141, 255, 0.22), transparent 40%),
+                url('https://images.pexels.com/photos/33474632/pexels-photo-33474632.jpeg?auto=compress&cs=tinysrgb&w=1800'),
+                url('https://images.pexels.com/photos/11829368/pexels-photo-11829368.jpeg?auto=compress&cs=tinysrgb&w=1800');
+            background-position: center, center, 15% 20%, 85% 80%;
+            background-size: auto, auto, 58% auto, 52% auto;
+            opacity: 0.36;
+            mix-blend-mode: screen;
             animation: bgFloatB 46s linear infinite alternate;
         }
         @keyframes bgFloatA {
@@ -73,11 +80,13 @@
         .page {
             max-width: 1000px;
             margin: 0 auto;
-            background: white;
+            background: var(--panel-bg);
             border-radius: 32px;
-            box-shadow: 0 25px 45px -18px rgba(0,40,70,0.25);
+            border: 1px solid rgba(220, 236, 248, 0.95);
+            box-shadow: 0 30px 54px -20px rgba(0, 38, 67, 0.34);
+            backdrop-filter: blur(1px);
             overflow: hidden;
-            padding: 2.5rem 2.8rem;
+            padding: 2.7rem 2.9rem;
         }
         @media (max-width: 600px) {
             body { padding: 1rem; }
@@ -90,9 +99,9 @@
             gap: 2.2rem;
             align-items: center;
             flex-wrap: wrap;
-            margin-bottom: 2.5rem;
-            border-bottom: 1px solid #e9ecf0;
-            padding-bottom: 2rem;
+            margin-bottom: 2.6rem;
+            border-bottom: 1px solid #dde9f3;
+            padding-bottom: 2.15rem;
         }
         .avatar {
             width: 150px;
@@ -107,7 +116,7 @@
             font-size: 2.8rem;
             font-weight: 600;
             letter-spacing: -0.02em;
-            color: #11324d;
+            color: var(--ink-main);
             margin-bottom: 0.3rem;
         }
         .interest-tags {
@@ -138,15 +147,15 @@
 
         /* 通用章节 */
         .section {
-            margin: 2.8rem 0 2.2rem;
+            margin: 3rem 0 2.2rem;
             scroll-margin-top: 1rem;
         }
         .section-title {
-            font-size: 2rem;
+            font-size: 1.85rem;
             font-weight: 600;
-            letter-spacing: -0.01em;
-            color: #1e405e;
-            border-left: 6px solid #3c8dbc;
+            letter-spacing: 0.01em;
+            color: var(--ink-main);
+            border-left: 6px solid var(--brand);
             padding-left: 1.2rem;
             margin-bottom: 2rem;
             display: flex;
@@ -154,8 +163,8 @@
             gap: 0.6rem;
         }
         .section-title i {
-            color: #3c8dbc;
-            font-size: 1.9rem;
+            color: var(--brand);
+            font-size: 1.75rem;
         }
 
         /* 教育卡片 */
@@ -164,8 +173,9 @@
             padding: 0;
         }
         .edu-list li {
-            background: #f9fcff;
-            border: 1px solid #deecf5;
+            background: var(--card-bg);
+            border: 1px solid var(--line-soft);
+            border-left: 5px solid #9dc6e5;
             border-radius: 24px;
             padding: 1.2rem 1.8rem;
             margin-bottom: 1rem;
@@ -173,7 +183,12 @@
             flex-wrap: wrap;
             align-items: baseline;
             gap: 0.8rem 1.5rem;
-            box-shadow: 0 3px 10px rgba(0,30,50,0.04);
+            box-shadow: 0 7px 18px rgba(0, 30, 50, 0.06);
+            transition: transform 0.16s ease, box-shadow 0.16s ease;
+        }
+        .edu-list li:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 22px rgba(0, 34, 58, 0.1);
         }
         .edu-date {
             background: #daeaf5;
@@ -195,15 +210,21 @@
             padding: 0;
         }
         .honor-list li {
-            background: #f9fcff;
-            border: 1px solid #deecf5;
+            background: var(--card-bg);
+            border: 1px solid var(--line-soft);
+            border-left: 5px solid #9dc6e5;
             border-radius: 24px;
             padding: 1.2rem 1.8rem;
             margin-bottom: 1rem;
             display: flex;
             align-items: center;
             gap: 1rem;
-            box-shadow: 0 3px 10px rgba(0,30,50,0.04);
+            box-shadow: 0 7px 18px rgba(0, 30, 50, 0.06);
+            transition: transform 0.16s ease, box-shadow 0.16s ease;
+        }
+        .honor-list li:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 22px rgba(0, 34, 58, 0.1);
         }
         .honor-list i {
             color: #3c8dbc;
@@ -224,11 +245,11 @@
         }
         .pub-item {
             background: #ffffff;
-            border-bottom: 1px solid #e7eef6;
+            border: 1px solid #e3edf6;
             padding: 1.4rem 1rem 1.4rem 2rem;
             transition: background 0.15s, border-color 0.15s;
-            border-radius: 12px;
-            margin-bottom: 0.2rem;
+            border-radius: 16px;
+            margin-bottom: 0.65rem;
             position: relative;
         }
         .pub-item:hover {
@@ -287,7 +308,7 @@
 
         /* 联系区域 */
         .contact-card {
-            background: linear-gradient(135deg, #f0f8ff 0%, #ffffff 80%);
+            background: linear-gradient(135deg, #ebf5ff 0%, #ffffff 78%);
             border-radius: 30px;
             padding: 2rem 2.2rem;
             border: 1px solid #d1e2f2;
@@ -379,11 +400,17 @@
             padding-left: 1rem;
         }
         @media (max-width: 780px) {
-            body::before { opacity: 0.47; }
+            body::before { opacity: 0.55; }
             body::after {
-                opacity: 0.3;
-                background-size: auto, auto, 62vmin auto, 56vmin auto, 24vmin auto;
+                opacity: 0.26;
+                background-size: auto, auto, 72% auto, 68% auto;
                 animation-duration: 52s;
+            }
+            .header-content h1 {
+                font-size: 2.2rem;
+            }
+            .section-title {
+                font-size: 1.55rem;
             }
         }
     </style>
@@ -427,12 +454,12 @@
             <h2 class="section-title"><i class="fa-regular fa-graduation-cap"></i> Education</h2>
             <ul class="edu-list">
                 <li>
-                    <span class="edu-date">2017 – 2021</span>
-                    <span class="edu-desc">Zhejiang University-University of Edinburgh Institute (ZJU-UoE), Dual Degree Bachelor</span>
-                </li>
-                <li>
                     <span class="edu-date">2021 – 2026</span>
                     <span class="edu-desc">Zhejiang University-University of Edinburgh Institute (ZJU-UoE), Dual Degree PhD</span>
+                </li>
+                <li>
+                    <span class="edu-date">2017 – 2021</span>
+                    <span class="edu-desc">Zhejiang University-University of Edinburgh Institute (ZJU-UoE), Dual Degree Bachelor</span>
                 </li>
             </ul>
         </section>
@@ -448,6 +475,10 @@
                 <li>
                     <i class="fa-regular fa-award"></i>
                     <span>Outstanding instructor in the national science-popularizing public activity held by Chinese Society for Cell Biology (CSCB), 2025</span>
+                </li>
+                <li>
+                    <i class="fa-regular fa-award"></i>
+                    <span>Outstanding Graduate Student</span>
                 </li>
             </ul>
         </section>
@@ -556,7 +587,7 @@
         <!-- 页脚 -->
         <div class="footer-note">
             <i class="fa-regular fa-copyright"></i> Qizhe Shao · Last updated March 2026 · Built with clarity
-            <br><span style="opacity:0.7;">Background microscopy GIFs from Wikimedia Commons (CC BY-SA / CC BY / CC0).</span>
+            <br><span style="opacity:0.6;"></span>
         </div>
     </div>
 

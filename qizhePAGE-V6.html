@@ -43,23 +43,22 @@
         }
         body::before {
             background-image:
-                radial-gradient(1300px 800px at 50% 30%, rgba(9, 16, 31, 0.55), rgba(4, 8, 16, 0.92)),
-                url('https://upload.wikimedia.org/wikipedia/commons/4/4c/Dark_Field_Microscopy.gif');
-            background-position: center, center;
-            opacity: 0.52;
+                linear-gradient(140deg, rgba(4, 9, 18, 0.86), rgba(12, 28, 46, 0.84)),
+                url('https://images.pexels.com/photos/33474633/pexels-photo-33474633.jpeg?auto=compress&cs=tinysrgb&w=1920');
+            background-position: center;
+            opacity: 0.62;
             animation: bgFloatA 38s ease-in-out infinite alternate;
         }
         body::after {
             background-image:
-                radial-gradient(circle at 20% 25%, rgba(70, 255, 208, 0.2), transparent 48%),
-                radial-gradient(circle at 82% 70%, rgba(120, 160, 255, 0.2), transparent 44%),
-                url('https://upload.wikimedia.org/wikipedia/commons/3/3e/Lancelet_GFP_GIF.gif'),
-                url('https://upload.wikimedia.org/wikipedia/commons/0/07/Unmixed_Autofluorescence.gif'),
-                url('https://upload.wikimedia.org/wikipedia/commons/2/27/E.-coli-growth.gif');
-            background-position: center, center, 8% 18%, 88% 82%, 55% 42%;
-            background-size: auto, auto, 42vmin auto, 36vmin auto, 18vmin auto;
-            opacity: 0.44;
-            mix-blend-mode: lighten;
+                radial-gradient(circle at 25% 25%, rgba(95, 233, 255, 0.24), transparent 45%),
+                radial-gradient(circle at 80% 75%, rgba(94, 141, 255, 0.22), transparent 40%),
+                url('https://images.pexels.com/photos/33474632/pexels-photo-33474632.jpeg?auto=compress&cs=tinysrgb&w=1800'),
+                url('https://images.pexels.com/photos/11829368/pexels-photo-11829368.jpeg?auto=compress&cs=tinysrgb&w=1800');
+            background-position: center, center, 15% 20%, 85% 80%;
+            background-size: auto, auto, 58% auto, 52% auto;
+            opacity: 0.36;
+            mix-blend-mode: screen;
             animation: bgFloatB 46s linear infinite alternate;
         }
         @keyframes bgFloatA {
@@ -379,10 +378,10 @@
             padding-left: 1rem;
         }
         @media (max-width: 780px) {
-            body::before { opacity: 0.47; }
+            body::before { opacity: 0.55; }
             body::after {
-                opacity: 0.3;
-                background-size: auto, auto, 62vmin auto, 56vmin auto, 24vmin auto;
+                opacity: 0.26;
+                background-size: auto, auto, 72% auto, 68% auto;
                 animation-duration: 52s;
             }
         }
@@ -556,7 +555,7 @@
         <!-- 页脚 -->
         <div class="footer-note">
             <i class="fa-regular fa-copyright"></i> Qizhe Shao · Last updated March 2026 · Built with clarity
-            <br><span style="opacity:0.7;">Background microscopy GIFs from Wikimedia Commons (CC BY-SA / CC BY / CC0).</span>
+            <br><span style="opacity:0.6;"></span>
         </div>
     </div>
 

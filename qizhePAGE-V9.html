@@ -17,50 +17,105 @@
         }
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background:
-                radial-gradient(1200px 700px at 10% -10%, rgba(86, 207, 255, 0.18), transparent 60%),
-                radial-gradient(900px 600px at 95% 5%, rgba(73, 130, 255, 0.16), transparent 65%),
-                linear-gradient(140deg, #060c16 0%, #0a1222 45%, #0e1b2e 100%);
+            background: #02050c;
             color: #1a2b3c;
             line-height: 1.6;
             padding: 2rem 1.5rem;
             min-height: 100vh;
             position: relative;
+            isolation: isolate;
+            overflow-x: hidden;
         }
         body::before,
         body::after {
-            content: "";
+            display: none;
+        }
+        .bg-stage {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            inset: 0;
             pointer-events: none;
-            z-index: -2;
-            background-size: cover;
+            z-index: 0;
+            overflow: hidden;
+            background:
+                radial-gradient(circle at 16% 18%, rgba(76, 218, 255, 0.16), transparent 38%),
+                radial-gradient(circle at 83% 78%, rgba(95, 128, 255, 0.14), transparent 42%),
+                #02050c;
+        }
+        .bg-layer {
+            position: absolute;
             background-repeat: no-repeat;
-            filter: saturate(1.15) contrast(1.06);
+            background-size: cover;
+            filter: saturate(1.2) contrast(1.12) brightness(1.14);
+            will-change: transform, opacity;
         }
-        body::before {
+        .bg-photo {
+            inset: 0;
             background-image:
-                radial-gradient(1300px 800px at 50% 30%, rgba(9, 16, 31, 0.55), rgba(4, 8, 16, 0.92)),
-                url('https://upload.wikimedia.org/wikipedia/commons/4/4c/Dark_Field_Microscopy.gif');
-            background-position: center, center;
+                linear-gradient(135deg, rgba(2, 8, 18, 0.82), rgba(5, 14, 30, 0.78)),
+                url('photo1.jpg');
+            background-position: center;
+            opacity: 0.42;
+            animation: bgFloatA 40s ease-in-out infinite alternate;
+        }
+        .bg-gif1 {
+            width: 34vw;
+            height: 34vw;
+            min-width: 280px;
+            min-height: 280px;
+            left: -12vw;
+            top: -12vh;
+            background-image: url('gif1.gif');
+            background-position: center;
+            border-radius: 50%;
+            opacity: 0.58;
+            mix-blend-mode: normal;
+            animation: drift1 32s ease-in-out infinite alternate;
+        }
+        .bg-gif2 {
+            width: 34vw;
+            height: 34vw;
+            min-width: 260px;
+            min-height: 260px;
+            right: -10vw;
+            top: -4vh;
+            background-image: url('gif2.gif');
+            border-radius: 50%;
+            opacity: 0.62;
+            filter: saturate(1.24) contrast(1.14) brightness(1.2);
+            mix-blend-mode: normal;
+            animation: drift2 28s ease-in-out infinite alternate;
+        }
+        .bg-gif3 {
+            width: 30vw;
+            height: 30vw;
+            min-width: 240px;
+            min-height: 240px;
+            left: -16vw;
+            bottom: -10vh;
+            background-image: url('gif3.gif');
+            border-radius: 50%;
+            opacity: 0.62;
+            mix-blend-mode: normal;
+            animation: none;
+        }
+        .bg-gif4 {
+            width: 27vw;
+            height: 27vw;
+            min-width: 230px;
+            min-height: 230px;
+            right: -4vw;
+            bottom: 8vh;
+            background-image: url('gif4.gif');
+            border-radius: 50%;
+            opacity: 0.68;
+            filter: saturate(1.24) contrast(1.14) brightness(1.2);
+            mix-blend-mode: normal;
+            animation: drift4 34s ease-in-out infinite alternate;
+        }
+        .bg-noise {
+            inset: 0;
+            background-image: linear-gradient(to bottom, rgba(1, 5, 12, 0.2), rgba(1, 5, 12, 0.7));
             opacity: 0.52;
-            animation: bgFloatA 38s ease-in-out infinite alternate;
-        }
-        body::after {
-            background-image:
-                radial-gradient(circle at 20% 25%, rgba(70, 255, 208, 0.2), transparent 48%),
-                radial-gradient(circle at 82% 70%, rgba(120, 160, 255, 0.2), transparent 44%),
-                url('https://upload.wikimedia.org/wikipedia/commons/3/3e/Lancelet_GFP_GIF.gif'),
-                url('https://upload.wikimedia.org/wikipedia/commons/0/07/Unmixed_Autofluorescence.gif'),
-                url('https://upload.wikimedia.org/wikipedia/commons/2/27/E.-coli-growth.gif');
-            background-position: center, center, 8% 18%, 88% 82%, 55% 42%;
-            background-size: auto, auto, 42vmin auto, 36vmin auto, 18vmin auto;
-            opacity: 0.44;
-            mix-blend-mode: lighten;
-            animation: bgFloatB 46s linear infinite alternate;
         }
         @keyframes bgFloatA {
             0% { transform: scale(1.03) translate3d(0, 0, 0); }
@@ -70,14 +125,33 @@
             0% { transform: scale(1.02) translate3d(0, 0, 0); }
             100% { transform: scale(1.09) translate3d(2.2%, 1.4%, 0); }
         }
+        @keyframes drift1 {
+            0% { transform: translate3d(0, 0, 0) scale(1); }
+            100% { transform: translate3d(4vw, 5vh, 0) scale(1.08); }
+        }
+        @keyframes drift2 {
+            0% { transform: translate3d(0, 0, 0) scale(1); }
+            100% { transform: translate3d(-4vw, -3vh, 0) scale(1.06); }
+        }
+        @keyframes drift3 {
+            0% { transform: translate3d(0, 0, 0) scale(1); }
+            100% { transform: translate3d(3vw, -4vh, 0) scale(1.07); }
+        }
+        @keyframes drift4 {
+            0% { transform: translate3d(0, 0, 0) scale(1); }
+            100% { transform: translate3d(-3vw, 4vh, 0) scale(1.08); }
+        }
         .page {
             max-width: 1000px;
             margin: 0 auto;
-            background: white;
+            background: rgba(255, 255, 255, 0.95);
             border-radius: 32px;
-            box-shadow: 0 25px 45px -18px rgba(0,40,70,0.25);
+            border: 1px solid #d8e9f7;
+            box-shadow: 0 28px 48px -20px rgba(0, 48, 88, 0.34);
             overflow: hidden;
             padding: 2.5rem 2.8rem;
+            position: relative;
+            z-index: 2;
         }
         @media (max-width: 600px) {
             body { padding: 1rem; }
@@ -100,7 +174,7 @@
             object-fit: cover;
             border-radius: 50%;
             border: 4px solid white;
-            box-shadow: 0 12px 22px -10px rgba(27, 60, 100, 0.3);
+            box-shadow: 0 16px 24px -12px rgba(16, 78, 132, 0.45);
             background: #e6edf5;
         }
         .header-content h1 {
@@ -126,14 +200,15 @@
             border: 1px solid #c5ddf2;
         }
         .badge-phd {
-            background: #d6e5f5;
-            color: #0f4166;
+            background: linear-gradient(120deg, #deeeff, #d8e7fb);
+            color: #0c4168;
             padding: 0.2rem 1.2rem;
             border-radius: 30px;
             font-size: 0.9rem;
             font-weight: 600;
             display: inline-block;
             margin-top: 0.4rem;
+            border: 1px solid #bad7f0;
         }
 
         /* 通用章节 */
@@ -144,7 +219,7 @@
         .section-title {
             font-size: 2rem;
             font-weight: 600;
-            letter-spacing: -0.01em;
+            letter-spacing: 0.01em;
             color: #1e405e;
             border-left: 6px solid #3c8dbc;
             padding-left: 1.2rem;
@@ -225,6 +300,7 @@
         .pub-item {
             background: #ffffff;
             border-bottom: 1px solid #e7eef6;
+            border-left: 4px solid #d2e7f8;
             padding: 1.4rem 1rem 1.4rem 2rem;
             transition: background 0.15s, border-color 0.15s;
             border-radius: 12px;
@@ -379,16 +455,30 @@
             padding-left: 1rem;
         }
         @media (max-width: 780px) {
-            body::before { opacity: 0.47; }
-            body::after {
-                opacity: 0.3;
-                background-size: auto, auto, 62vmin auto, 56vmin auto, 24vmin auto;
-                animation-duration: 52s;
+            .bg-gif1, .bg-gif2, .bg-gif3, .bg-gif4 { opacity: 0.42; }
+            .bg-gif3 {
+                left: -20vw;
+                bottom: -8vh;
+            }
+            .bg-gif4 {
+                right: -6vw;
+                bottom: 14vh;
+            }
+            .header {
+                gap: 1.5rem;
             }
         }
     </style>
 </head>
 <body>
+    <div class="bg-stage" aria-hidden="true">
+        <div class="bg-layer bg-photo"></div>
+        <div class="bg-layer bg-gif1"></div>
+        <div class="bg-layer bg-gif2"></div>
+        <div class="bg-layer bg-gif3"></div>
+        <div class="bg-layer bg-gif4"></div>
+        <div class="bg-layer bg-noise"></div>
+    </div>
     <div class="page">
         <!-- 头部区域 -->
         <div class="header">
@@ -427,12 +517,12 @@
             <h2 class="section-title"><i class="fa-regular fa-graduation-cap"></i> Education</h2>
             <ul class="edu-list">
                 <li>
-                    <span class="edu-date">2017 – 2021</span>
-                    <span class="edu-desc">Zhejiang University-University of Edinburgh Institute (ZJU-UoE), Dual Degree Bachelor</span>
-                </li>
-                <li>
                     <span class="edu-date">2021 – 2026</span>
                     <span class="edu-desc">Zhejiang University-University of Edinburgh Institute (ZJU-UoE), Dual Degree PhD</span>
+                </li>
+                <li>
+                    <span class="edu-date">2017 – 2021</span>
+                    <span class="edu-desc">Zhejiang University-University of Edinburgh Institute (ZJU-UoE), Dual Degree Bachelor</span>
                 </li>
             </ul>
         </section>
@@ -448,6 +538,10 @@
                 <li>
                     <i class="fa-regular fa-award"></i>
                     <span>Outstanding instructor in the national science-popularizing public activity held by Chinese Society for Cell Biology (CSCB), 2025</span>
+                </li>
+                <li>
+                    <i class="fa-regular fa-award"></i>
+                    <span>Outstanding Graduate Student</span>
                 </li>
             </ul>
         </section>
@@ -556,7 +650,7 @@
         <!-- 页脚 -->
         <div class="footer-note">
             <i class="fa-regular fa-copyright"></i> Qizhe Shao · Last updated March 2026 · Built with clarity
-            <br><span style="opacity:0.7;">Background microscopy GIFs from Wikimedia Commons (CC BY-SA / CC BY / CC0).</span>
+            <br><span style="opacity:0.6;"></span>
         </div>
     </div>
 
